@@ -1,0 +1,550 @@
+CREATE DATABASE HOTEL_DB;
+USE HOTEL_DB;
+
+create TABLE IF NOT EXISTS Customers(
+    firstname VARCHAR(31) NOT NULL,
+    lastname VARCHAR(31) NOT NULL,
+    birthdate DATE NOT NULL,
+    typeofpaper VARCHAR(31) NOT NULL,
+    issuedate DATE NOT NULL,
+    idpapernumber VARCHAR(15) NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    
+    PRIMARY KEY(nfcid)
+) ENGINE = INNODB;
+
+INSERT INTO Customers VALUES
+('Ross', 'Geller', '1980-03-21', 'identity', '2000-09-15', 'AM314336', 1);
+INSERT INTO Customers VALUES
+('Monica', 'Geller', '1982-04-09', 'identity', '2005-04-16', 'AM214556', 2);
+INSERT INTO Customers VALUES
+('Phoebe', 'Buffet', '1977-11-24', 'identity', '1997-11-15', 'AB132345', 3);
+INSERT INTO Customers VALUES
+('Joey', 'Tribianni', '1983-10-05', 'identity', '2002-05-03', 'SB413563', 4);
+INSERT INTO Customers VALUES
+('Chandler', 'Bing', '1979-07-19', 'identity', '1997-12-12', 'SA908743', 5);
+INSERT INTO Customers VALUES
+('Rachel', 'Green', '1984-11-04', 'identity', '1996-12-08', 'JK123456', 6);
+INSERT INTO Customers VALUES
+('Lilly', 'Aldrin', '1981-09-20', 'identity', '1999-10-21', 'AW112094', 7);
+INSERT INTO Customers VALUES
+('Ted', 'Mosby', '1960-08-30', 'identity', '1993-05-29', 'SQ190432', 8);
+INSERT INTO Customers VALUES 
+('Marshall', 'Eriksen', '1972-02-11', 'identity', '1987-04-05', 'DE909432', 9);
+INSERT INTO Customers VALUES
+('Barney', 'Stinson', '1945-07-15', 'identity', '1981-09-21', 'WQ895345', 10);
+INSERT INTO Customers VALUES
+('Robin', 'Schrebatsky', '1981-01-31', 'identity', '1999-10-09', 'FG850343', 11);
+
+
+create TABLE IF NOT EXISTS Phonenumber(
+    phonenumber BIGINT(10) NOT NULL,
+    nfcid BIGINT(15) NOT NULL, 
+    PRIMARY KEY(phonenumber),
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid)
+) ENGINE = INNODB;
+
+INSERT INTO Phonenumber VALUES
+(6987352781,1); 
+
+INSERT INTO Phonenumber VALUES
+(6987352601,2); 
+
+INSERT INTO Phonenumber VALUES
+(6998342781,3); 
+
+INSERT INTO Phonenumber VALUES
+(6955331981,4);
+
+INSERT INTO Phonenumber VALUES
+(6974242781,5);
+
+INSERT INTO Phonenumber VALUES
+(6901022781,6);
+
+INSERT INTO Phonenumber VALUES
+(6953720781,7);
+
+INSERT INTO Phonenumber VALUES
+(6901124573,8);
+
+INSERT INTO Phonenumber VALUES
+(6911247630,9);
+
+INSERT INTO Phonenumber VALUES
+(6901445792,10);
+
+INSERT INTO Phonenumber VALUES
+(6901289035,11);
+        
+create TABLE IF NOT EXISTS Email(
+    email VARCHAR(31) NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    
+    PRIMARY KEY(email),
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid)
+) ENGINE = INNODB;
+
+INSERT INTO Email VALUES
+('rosstheboss@gmail.com',1); 
+
+INSERT INTO Email VALUES
+('monicagelerrr@gmail.com',2); 
+
+INSERT INTO Email VALUES
+('smellycat@gmail.com',3); 
+
+INSERT INTO Email VALUES
+('howyoudoin@gmail.com',4);
+
+INSERT INTO Email VALUES
+('chanandlerbong@gmail.com',5);
+
+INSERT INTO Email VALUES
+('notonabreak@gmail.com',6);
+
+INSERT INTO Email VALUES
+('painter@gmail.com',7);
+
+INSERT INTO Email VALUES
+('bluetrombet@gmail.com',8);
+
+INSERT INTO Email VALUES
+('imsmart@gmail.com',9);
+
+INSERT INTO Email VALUES
+('playbook@gmail.com',10);
+
+INSERT INTO Email VALUES
+('superstar@gmail.com',11);
+
+create TABLE IF NOT EXISTS Places(
+    roomname VARCHAR(31) NOT NULL,
+    numberofbeds INT(2) NOT NULL,
+    location VARCHAR(5) NOT NULL,
+    roomid BIGINT(15) NOT NULL,
+    
+    PRIMARY KEY(roomid)
+) ENGINE = INNODB;
+
+INSERT INTO Places VALUES 
+('Restaurant-Waterfalls', 0,'East',1);
+
+INSERT INTO Places VALUES 
+('Restaurant-BloodyMary', 0,'North',2);
+
+INSERT INTO Places VALUES 
+('Restaurant-Wynwood', 0,'East',3);
+
+INSERT INTO Places VALUES 
+('Restaurant-MeatBalls', 0,'South',4);
+
+INSERT INTO Places VALUES 
+('Gym-BodyBuilder', 0,'West',5);
+
+INSERT INTO Places VALUES 
+('Gym-Atlantic', 0,'West',6);
+
+INSERT INTO Places VALUES 
+('Gym-Skinny', 0,'North',7);
+
+INSERT INTO Places VALUES 
+('Gym-Lover', 0,'West',8);
+
+INSERT INTO Places VALUES 
+('Bar-Coctail', 0,'South',9);
+
+INSERT INTO Places VALUES 
+('Bar-Central Perk', 0,'East',10);
+
+INSERT INTO Places VALUES 
+('Bar-Wasted', 0,'North',11);
+
+INSERT INTO Places VALUES 
+('Hair Salon', 0,'North',12);
+
+INSERT INTO Places VALUES 
+('Shauna', 0,'East',13);
+
+INSERT INTO Places VALUES 
+('Shauna-Steamy', 0,'North',14);
+
+INSERT INTO Places VALUES 
+('Shauna-2', 0,'East',15);
+
+INSERT INTO Places VALUES 
+('Meeting Room-1', 0,'North',16);
+
+INSERT INTO Places VALUES 
+('Meeting Room-2', 0,'East',17);
+
+INSERT INTO Places VALUES 
+('Meeting Room-3', 0,'South',18);
+
+INSERT INTO Places VALUES 
+('Meeting Room-4', 0,'West',19);
+
+INSERT INTO Places VALUES 
+('Meeting Room-5', 0,'East',20);
+
+INSERT INTO Places VALUES 
+('Room-1', 2,'East',21);
+
+INSERT INTO Places VALUES 
+('Room-2', 3,'North',22);
+
+INSERT INTO Places VALUES 
+('Room-3', 1,'West',23);
+
+INSERT INTO Places VALUES 
+('Room-4', 3,'South',24);
+
+INSERT INTO Places VALUES 
+('Room-5', 4,'East',25);
+
+INSERT INTO Places VALUES 
+('Room-6', 2,'North',26);
+
+INSERT INTO Places VALUES 
+('Room-7', 4,'South',27);
+
+INSERT INTO Places VALUES 
+('Room-8', 3,'West',28);
+
+INSERT INTO Places VALUES 
+('Room-9', 1,'South',29);
+
+INSERT INTO Places VALUES 
+('Room-10', 4,'East',30);
+
+
+create TABLE IF NOT EXISTS Visit(
+    arrivaldate DATE NOT NULL,
+    arrivaltime TIME NOT NULL,
+    departuredate DATE NOT NULL,
+    departuretime TIME NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    roomid BIGINT(15) NOT NULL,
+    
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid),
+    FOREIGN KEY(roomid) REFERENCES Places(roomid)
+) ENGINE = INNODB;
+
+INSERT INTO Visit VALUES
+('2021-02-13', '12:08:36','2021-02-13' ,'16:21:40',1,2);
+
+INSERT INTO Visit VALUES
+('2021-02-14', '11:08:36','2021-02-14' ,'16:21:40',1,6);
+
+INSERT INTO Visit VALUES
+('2021-02-10' ,'12:20:02','2021-02-20', '16:21:40',1,25);
+
+INSERT INTO Visit VALUES
+('2021-03-07', '02:40:36','2021-03-07', '10:18:40',2,15);
+
+INSERT INTO Visit VALUES
+('2021-03-05' ,'9:14:38','2021-03-12', '11:08:40',2,21);
+
+INSERT INTO Visit VALUES
+('2021-01-03', '1:17:36','2021-01-13', '13:12:40',3,9);
+
+INSERT INTO Visit VALUES
+('2021-01-03', '18:09:42','2021-01-15', '16:21:40',3,22);
+
+INSERT INTO Visit VALUES
+('2021-05-04', '16:00:06','2021-05-04', '24:12:40',4,19);
+
+INSERT INTO Visit VALUES
+('2021-05-05', '10:12:36','2021-05-05', '24:12:40',4,12);
+
+INSERT INTO Visit VALUES
+('2021-05-02', '16:19:32','2021-05-10', '17:24:09',4,23);
+
+INSERT INTO Visit VALUES
+('2021-06-16', '17:08:03','2021-06-16', '20:15:16',5,11);
+
+INSERT INTO Visit VALUES
+('2021-06-15', '04:09:32','2021-06-26', '06:09:08',5,24);
+
+INSERT INTO Visit VALUES
+('2021-08-14', '12:09:06','2021-08-14', '13:08:12',6,4);
+
+INSERT INTO Visit VALUES
+('2021-08-12', '18:09:42','2021-08-18', '16:21:40',6,26);
+
+INSERT INTO Visit VALUES
+('2021-03-10', '03:18:27','2021-03-15', '23:21:40',7,10);
+
+INSERT INTO Visit VALUES
+('2021-03-08', '18:09:42','2021-03-17', '16:21:40',7,21);
+
+INSERT INTO Visit VALUES
+('2021-03-10', '20:17:33','2021-09-18', '16:12:44',8,7);
+
+INSERT INTO Visit VALUES
+('2021-09-16', '18:09:42','2021-09-20', '06:21:40',8,25);
+
+INSERT INTO Visit VALUES
+('2021-03-10', '13:19:30','2021-10-18', '16:14:30',9,12);
+
+INSERT INTO Visit VALUES
+('2021-10-16', '15:09:42','2021-10-20', '18:21:00',9,27);
+
+INSERT INTO Visit VALUES
+('2021-03-10', '17:09:00','2021-01-05', '16:21:40',10,17);
+
+INSERT INTO Visit VALUES
+('2021-01-02', '18:10:42','2021-01-08', '20:11:02',10,30);
+
+INSERT INTO Visit VALUES
+('2021-04-16', '11:09:32','2021-04-20', '15:01:40',11,9);
+
+INSERT INTO Visit VALUES
+('2021-03-10', '14:19:01','2021-04-25', '14:21:40',11,1);
+
+create TABLE IF NOT EXISTS Canaccess(
+    arrivaldate DATE NOT NULL,
+    arrivaltime TIME NOT NULL,
+    departuredate DATE NOT NULL,
+    departuretime TIME NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    roomid BIGINT(15) NOT NULL,
+    
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid),
+    FOREIGN KEY(roomid) REFERENCES Places(roomid)
+) ENGINE = INNODB;
+
+INSERT INTO Canaccess VALUES
+('2021-02-10' ,'12:20:02','2021-02-20', '16:21:40',1,25);
+
+INSERT INTO Canaccess VALUES
+('2021-03-05' ,'9:14:38','2021-03-12', '11:08:40',2,21);
+
+INSERT INTO Canaccess VALUES
+('2021-01-03', '18:09:42','2021-01-15', '16:21:40',3,22);
+
+INSERT INTO Canaccess VALUES
+('2021-05-02', '16:19:32','2021-05-10', '17:24:09',4,23);
+
+INSERT INTO Canaccess VALUES
+('2021-06-15', '04:09:32','2021-06-26', '06:09:08',5,24);
+
+INSERT INTO Canaccess VALUES
+('2021-08-12', '18:09:42','2021-08-18', '16:21:40',6,26);
+
+INSERT INTO Canaccess VALUES
+('2021-03-08', '18:09:42','2021-03-17', '16:21:40',7,21);
+
+INSERT INTO Canaccess VALUES
+('2021-09-16', '18:09:42','2021-09-20', '06:21:40',8,25);
+
+INSERT INTO Canaccess VALUES
+('2021-10-16', '15:09:42','2021-10-20', '18:21:00',9,27);
+
+INSERT INTO Canaccess VALUES
+('2021-01-02', '18:10:42','2021-01-08', '20:11:02',10,30);
+
+INSERT INTO Canaccess VALUES
+('2021-04-11', '13:09:42','2021-04-25', '14:21:40',11,23);
+
+create TABLE IF NOT EXISTS Services(
+    generaldescription VARCHAR(31) NOT NULL,
+    requiresubscription INT(1) NOT NULL,
+    serviceid BIGINT(15) NOT NULL,
+    chargeofsubscription BIGINT(15) NOT NULL,
+    
+    PRIMARY KEY(serviceid)
+) ENGINE = INNODB;
+
+INSERT INTO Services VALUES
+('Restaurant',0,1,0);
+
+INSERT INTO Services VALUES
+('Gym',1,2,50);
+
+INSERT INTO Services VALUES
+('Bar',0,3,0);
+
+INSERT INTO Services VALUES
+('Shauna',1,4,70);
+
+INSERT INTO Services VALUES
+('Hair Salon',0,5,0);
+
+INSERT INTO Services VALUES
+('Meeting Rooms',1,6,20);
+
+create TABLE IF NOT EXISTS Subscription(
+    dateofsubscription DATE NOT NULL,
+    timeofsubscription TIME NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    serviceid BIGINT(15) NOT NULL,
+    
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid),
+    FOREIGN KEY(serviceid) REFERENCES Services(serviceid)
+) ENGINE = INNODB;
+
+INSERT INTO Subscription VALUES
+('2021-02-11', '13:02:45',1,2);
+
+INSERT INTO Subscription VALUES
+('2021-02-12', '03:02:45',1,4);
+
+INSERT INTO Subscription VALUES
+('2021-03-06', '12:10:45',2,4);
+
+INSERT INTO Subscription VALUES
+('2021-01-05', '07:02:34',3,2);
+
+INSERT INTO Subscription VALUES
+('2021-05-04', '15:35:05',4,6);
+
+INSERT INTO Subscription VALUES
+('2021-05-05', '19:35:05',4,4);
+
+INSERT INTO Subscription VALUES
+('2021-06-17', '05:12:07',5,4);
+
+INSERT INTO Subscription VALUES
+('2021-09-18', '06:13:30',8,2);
+
+INSERT INTO Subscription VALUES
+('2021-09-17', '12:06:31',8,6);
+
+INSERT INTO Subscription VALUES
+('2021-01-04', '15:03:00',10,6);
+
+create TABLE IF NOT EXISTS Useservices(
+    dateofuse DATE NOT NULL,
+    timeofuse TIME NOT NULL,
+    description VARCHAR(31) NOT NULL,
+    charge INT(7) NOT NULL,
+    nfcid BIGINT(15) NOT NULL,
+    serviceid BIGINT(15) NOT NULL,
+    
+    PRIMARY KEY(dateofuse),
+    FOREIGN KEY(nfcid) REFERENCES Customers(nfcid),
+    FOREIGN KEY(serviceid) REFERENCES Services(serviceid)
+) ENGINE = INNODB;
+
+INSERT INTO Useservices VALUE
+('2021-02-13', '12:08:36','Restaurant-BloodyMary',23,1,1);
+
+INSERT INTO Useservices VALUE
+('2021-02-14', '11:08:36','Gym-Atlantic',20,1,2);
+
+INSERT INTO Useservices VALUE
+('2021-03-07', '02:40:36','Shauna-2',13,2,4);
+
+INSERT INTO Useservices VALUE
+('2021-01-05', '01:17:36','Bar-Coctail',11,3,3);
+
+INSERT INTO Useservices VALUE
+('2021-05-04', '16:00:06','Meeting Room-4',33,4,6);
+
+INSERT INTO Useservices VALUE
+('2021-05-05', '10:12:36','Hair Salon',25,4,5);
+
+INSERT INTO Useservices VALUE
+('2021-06-16', '17:08:03','Bar-Wasted',29,5,3);
+
+INSERT INTO Useservices VALUE
+('2021-08-14', '12:09:06','Restaurant-MeatBalls',124,6,1);
+
+INSERT INTO Useservices VALUE
+('2021-03-10', '03:18:27','Bar-Central Perk',23,7,3);
+
+INSERT INTO Useservices VALUE
+('2021-09-18', '20:17:33','Gym-Skinny',10,8,2);
+
+INSERT INTO Useservices VALUE
+('2021-10-17', '13:19:30','Hair Salon',115,9,5);
+
+INSERT INTO Useservices VALUE
+('2021-01-03', '17:09:00','Meeting Room-2',20,10,6);
+
+INSERT INTO Useservices VALUE
+('2021-04-12', '14:19:01','Restaurant-Waterfalls',98,11,1);
+
+create TABLE IF NOT EXISTS Providedby(
+    serviceid BIGINT(15) NOT NULL,
+    roomid BIGINT(15) NOT NULL,
+    
+    FOREIGN KEY(serviceid) REFERENCES Services(serviceid),
+    FOREIGN KEY(roomid) REFERENCES Places(roomid)
+) ENGINE = INNODB;
+
+INSERT INTO Providedby VALUE
+(1,1);
+
+INSERT INTO Providedby VALUE
+(1,2);
+
+INSERT INTO Providedby VALUE
+(1,3);
+
+INSERT INTO Providedby VALUE
+(1,4);
+
+INSERT INTO Providedby VALUE
+(2,5);
+
+INSERT INTO Providedby VALUE
+(2,6);
+
+INSERT INTO Providedby VALUE
+(2,7);
+
+INSERT INTO Providedby VALUE
+(2,8);
+
+INSERT INTO Providedby VALUE
+(3,9);
+
+INSERT INTO Providedby VALUE
+(3,10);
+
+INSERT INTO Providedby VALUE
+(3,11);
+
+INSERT INTO Providedby VALUE
+(4,13);
+
+INSERT INTO Providedby VALUE
+(4,14);
+
+INSERT INTO Providedby VALUE
+(4,15);
+
+INSERT INTO Providedby VALUE
+(5,12);
+
+INSERT INTO Providedby VALUE
+(6,16);
+
+INSERT INTO Providedby VALUE
+(6,17);
+
+INSERT INTO Providedby VALUE
+(6,18);
+
+INSERT INTO Providedby VALUE
+(6,19);
+
+INSERT INTO Providedby VALUE
+(6,20);
+
+UPDATE Customers
+SET firstname = 'Emma', birthdate = '2020-07-22'
+WHERE nfcid = 1;
+
+UPDATE Places
+SET roomname = 'HairByLolita'
+WHERE roomid = 12;
+
+UPDATE Places
+SET numberofbeds = 2
+WHERE roomid = 30;
+
+DELETE FROM Useservices
+WHERE dateofuse = '2021-02-13';
